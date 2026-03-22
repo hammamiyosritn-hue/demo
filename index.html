@@ -13,43 +13,20 @@
     theme: {
       extend: {
         colors: {
-          "surface": "#fcf9f8",
-          "tertiary": "#4a5f80",
-          "background": "#fcf9f8",
-          "surface-container": "#f0edec",
-          "secondary": "#5f5e5e",
-          "on-primary": "#ffffff",
-          "outline-variant": "#d1c5b5",
-          "surface-container-lowest": "#ffffff",
-          "outline": "#807668",
-          "primary-fixed": "#ffdead",
-          "on-secondary-container": "#656464",
-          "primary-container": "#b6935c",
-          "on-background": "#1c1b1b",
-          "on-surface": "#1c1b1b",
-          "secondary-container": "#e4e2e1",
-          "surface-container-highest": "#e5e2e1",
-          "surface-container-high": "#ebe7e7",
-          "surface-dim": "#dcd9d9",
-          "on-surface-variant": "#4e453a",
-          "primary": "#775928",
-          "on-error": "#ffffff",
-          "inverse-primary": "#e7c185",
-          "primary-fixed-dim": "#e7c185",
-          "surface-container-low": "#f6f3f2",
-          "on-tertiary-container": "#1b3250",
-          "surface-variant": "#e5e2e1",
-          "surface-tint": "#775928",
-          "inverse-on-surface": "#f3f0ef",
-          "on-secondary": "#ffffff",
-          "surface-bright": "#fcf9f8",
+          "surface": "#fcf9f8","tertiary": "#4a5f80","background": "#fcf9f8",
+          "surface-container": "#f0edec","secondary": "#5f5e5e","on-primary": "#ffffff",
+          "outline-variant": "#d1c5b5","surface-container-lowest": "#ffffff","outline": "#807668",
+          "primary-fixed": "#ffdead","on-secondary-container": "#656464","primary-container": "#b6935c",
+          "on-background": "#1c1b1b","on-surface": "#1c1b1b","secondary-container": "#e4e2e1",
+          "surface-container-highest": "#e5e2e1","surface-container-high": "#ebe7e7",
+          "surface-dim": "#dcd9d9","on-surface-variant": "#4e453a","primary": "#775928",
+          "on-error": "#ffffff","inverse-primary": "#e7c185","primary-fixed-dim": "#e7c185",
+          "surface-container-low": "#f6f3f2","on-tertiary-container": "#1b3250",
+          "surface-variant": "#e5e2e1","surface-tint": "#775928",
+          "inverse-on-surface": "#f3f0ef","on-secondary": "#ffffff","surface-bright": "#fcf9f8",
         },
-        fontFamily: {
-          "headline": ["Noto Serif"],
-          "body": ["Manrope"],
-          "label": ["Manrope"]
-        },
-        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        fontFamily: {"headline": ["Noto Serif"],"body": ["Manrope"],"label": ["Manrope"]},
+        borderRadius: {"DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem"},
       },
     },
   }
@@ -59,11 +36,9 @@
   .noto-serif { font-family: 'Noto Serif', serif; }
   .manrope { font-family: 'Manrope', sans-serif; }
   html { scroll-behavior: smooth; }
-  /* Modal */
   #reservation-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
   #reservation-modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
   #reservation-modal:not(.hidden) { opacity: 1; visibility: visible; }
-  /* Toast */
   #toast { transition: opacity 0.4s ease, transform 0.4s ease; }
   #toast.hidden { opacity: 0; transform: translateY(20px); pointer-events: none; }
   #toast:not(.hidden) { opacity: 1; transform: translateY(0); }
@@ -128,7 +103,7 @@
         <textarea name="requests" rows="2" placeholder="Dietary needs, celebrations..."
           class="w-full border border-outline-variant rounded px-3 py-2 text-sm manrope focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
       </div>
-      <button type="submit"
+      <button type="submit" id="submit-btn"
         class="w-full bg-primary text-on-primary py-4 rounded font-bold tracking-widest text-xs uppercase hover:opacity-90 active:scale-95 transition-all">
         Confirm Reservation
       </button>
@@ -137,8 +112,8 @@
 </div>
 
 <!-- ===== TOAST ===== -->
-<div id="toast" class="hidden fixed bottom-28 left-1/2 -translate-x-1/2 z-[200] bg-on-surface text-surface px-6 py-3 rounded-full text-sm manrope font-medium shadow-xl">
-  ✓ Reservation confirmed! We'll see you soon.
+<div id="toast" class="hidden fixed bottom-28 left-1/2 -translate-x-1/2 z-[200] bg-on-surface text-surface px-6 py-3 rounded-full text-sm manrope font-medium shadow-xl whitespace-nowrap">
+  Reservation confirmed!
 </div>
 
 <!-- ===== NAVIGATION ===== -->
@@ -152,13 +127,11 @@
     </div>
     <div class="flex items-center space-x-4">
       <button onclick="openModal()" class="bg-primary text-on-primary px-8 py-3 rounded-md font-medium tracking-wide hover:opacity-90 active:scale-95 transition-all text-sm uppercase">Book a Table</button>
-      <!-- Mobile menu button -->
       <button id="mobile-menu-btn" class="md:hidden p-2 text-stone-700" aria-label="Open menu">
         <span class="material-symbols-outlined">menu</span>
       </button>
     </div>
   </div>
-  <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100 px-8 py-4 flex flex-col space-y-4">
     <a class="text-amber-700 font-serif noto-serif" href="#menu" onclick="closeMobileMenu()">Menu</a>
     <a class="text-stone-600 font-serif noto-serif" href="#reservations" onclick="closeMobileMenu()">Reservations</a>
@@ -167,6 +140,7 @@
 </nav>
 
 <main>
+
 <!-- ===== HERO ===== -->
 <section id="hero" class="relative h-screen min-h-[800px] flex items-center overflow-hidden">
   <div class="absolute inset-0 z-0">
@@ -177,7 +151,7 @@
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
     <div class="max-w-2xl">
-      <span class="manrope uppercase tracking-[0.4em] text-xs text-primary mb-6 block font-bold">Est. 1994 — Paris</span>
+      <span class="manrope uppercase tracking-[0.4em] text-xs text-primary mb-6 block font-bold">Est. 1994 &mdash; Paris</span>
       <h1 class="noto-serif text-7xl md:text-8xl lg:text-9xl text-on-background leading-tight -tracking-[0.03em] mb-8">
         The Poetry of <br/><span class="italic text-primary">Plating</span>
       </h1>
@@ -189,9 +163,7 @@
           class="bg-primary text-on-primary px-10 py-5 rounded-md font-bold tracking-widest text-xs uppercase shadow-lg shadow-primary/20 hover:shadow-xl transition-all">
           Discover the Menu
         </button>
-        <a class="noto-serif italic text-lg text-primary border-b border-primary/20 pb-1 hover:border-primary transition-colors" href="#about">
-          Our Philosophy
-        </a>
+        <a class="noto-serif italic text-lg text-primary border-b border-primary/20 pb-1 hover:border-primary transition-colors" href="#about">Our Philosophy</a>
       </div>
     </div>
   </div>
@@ -236,7 +208,7 @@
         src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop"/>
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
       <div class="absolute bottom-0 left-0 p-10 text-white">
-        <span class="manrope text-[10px] uppercase tracking-widest mb-2 block opacity-70">Main Entrée</span>
+        <span class="manrope text-[10px] uppercase tracking-widest mb-2 block opacity-70">Main Entr&eacute;e</span>
         <h3 class="noto-serif text-4xl mb-4 italic">Seared Diver Scallops</h3>
         <p class="manrope text-sm opacity-80 max-w-xs mb-6">Parsnip silk, brown butter emulsion, and shaved black truffle from the Perigord region.</p>
         <span class="noto-serif text-2xl text-primary-fixed-dim tracking-tight">$64</span>
@@ -248,7 +220,7 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
       <div class="absolute bottom-0 left-0 p-8 text-white">
         <h3 class="manrope text-xl font-bold mb-1">A5 Miyazaki Wagyu</h3>
-        <p class="manrope text-xs opacity-70 uppercase tracking-widest">Heritage Beef • Rare Harvest</p>
+        <p class="manrope text-xs opacity-70 uppercase tracking-widest">Heritage Beef &bull; Rare Harvest</p>
       </div>
     </div>
     <div class="md:col-span-1 md:row-span-1 group relative overflow-hidden rounded-lg bg-surface-container-highest">
@@ -257,7 +229,7 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
       <div class="absolute bottom-0 left-0 p-6 text-white">
         <h3 class="manrope text-lg font-bold">Midnight Saffron</h3>
-        <p class="manrope text-xs opacity-70">Gold Leaf • Honey</p>
+        <p class="manrope text-xs opacity-70">Gold Leaf &bull; Honey</p>
       </div>
     </div>
     <div class="md:col-span-1 md:row-span-1 group relative overflow-hidden rounded-lg bg-surface-container-highest">
@@ -266,19 +238,18 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
       <div class="absolute bottom-0 left-0 p-6 text-white">
         <h3 class="manrope text-lg font-bold">The Sommelier's Secret</h3>
-        <p class="manrope text-xs opacity-70">Aged Gin • Botanicals</p>
+        <p class="manrope text-xs opacity-70">Aged Gin &bull; Botanicals</p>
       </div>
     </div>
   </div>
   <div class="max-w-7xl mx-auto px-8 mt-16 text-center">
     <a class="manrope text-xs font-bold uppercase tracking-[0.5em] text-on-surface-variant hover:text-primary transition-colors inline-flex items-center gap-4" href="#menu">
-      View Entire Collection
-      <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      View Entire Collection <span class="material-symbols-outlined text-sm">arrow_forward</span>
     </a>
   </div>
 </section>
 
-<!-- ===== CTA / RESERVATIONS ===== -->
+<!-- ===== RESERVATIONS ===== -->
 <section id="reservations" class="py-24 bg-surface-container-highest">
   <div class="max-w-3xl mx-auto px-8 text-center">
     <h2 class="noto-serif text-5xl text-on-surface mb-8">An evening <br/><span class="italic">well spent.</span></h2>
@@ -291,6 +262,7 @@
     </div>
   </div>
 </section>
+
 </main>
 
 <!-- ===== FOOTER ===== -->
@@ -301,9 +273,9 @@
       <p class="manrope text-stone-500 text-sm leading-relaxed max-w-xs uppercase tracking-wider">
         Redefining the digital dining experience through curated aesthetics and culinary excellence.
       </p>
-      <p class="manrope text-stone-500 text-sm">📍 12 Rue de Rivoli, Paris, France</p>
-      <p class="manrope text-stone-500 text-sm">📞 +33 1 42 00 00 00</p>
-      <p class="manrope text-stone-500 text-sm">✉️ <a href="mailto:hello@epicurean.com" class="hover:text-primary transition-colors">hello@epicurean.com</a></p>
+      <p class="manrope text-stone-500 text-sm">&#128205; 12 Rue de Rivoli, Paris, France</p>
+      <p class="manrope text-stone-500 text-sm">&#128222; +33 1 42 00 00 00</p>
+      <p class="manrope text-stone-500 text-sm">&#9993; <a href="mailto:hello@epicurean.com" class="hover:text-primary transition-colors">hello@epicurean.com</a></p>
     </div>
     <div class="grid grid-cols-2 gap-8">
       <div class="flex flex-col space-y-4">
@@ -325,8 +297,8 @@
         <a class="text-stone-500 hover:text-primary transition-colors" href="mailto:hello@epicurean.com"><span class="material-symbols-outlined">mail</span></a>
         <a class="text-stone-500 hover:text-primary transition-colors" href="#" onclick="sharesite(); return false;"><span class="material-symbols-outlined">share</span></a>
       </div>
-      <p class="font-sans manrope uppercase tracking-widest text-[10px] text-stone-500">
-        © 2025 The Editorial Epicurean. All rights reserved.
+      <p class="manrope uppercase tracking-widest text-[10px] text-stone-500">
+        &copy; 2025 The Editorial Epicurean. All rights reserved.
       </p>
     </div>
   </div>
@@ -367,12 +339,12 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <script>
-  // Set today as default date
-  const today = new Date().toISOString().split('T')[0];
+  var N8N_WEBHOOK_URL = "https://n8n-production-140cd.up.railway.app/webhook/reservation";
+
+  var today = new Date().toISOString().split('T')[0];
   document.getElementById('bar-date').value = today;
   document.getElementById('modal-date').value = today;
 
-  // Modal open/close
   function openModal() {
     document.getElementById('reservation-modal').classList.remove('hidden');
     document.body.style.overflow = 'hidden';
@@ -382,65 +354,93 @@
     document.body.style.overflow = '';
   }
   function openModalFromBar() {
-    // Sync bar values to modal
-    const guests = document.getElementById('bar-guests').selectedIndex + 1;
-    document.getElementById('modal-guests').selectedIndex = Math.min(guests - 1, 5);
+    document.getElementById('modal-guests').selectedIndex = document.getElementById('bar-guests').selectedIndex;
     document.getElementById('modal-date').value = document.getElementById('bar-date').value;
-    const barTimeIdx = document.getElementById('bar-time').selectedIndex;
-    document.getElementById('modal-time').selectedIndex = barTimeIdx;
+    document.getElementById('modal-time').selectedIndex = document.getElementById('bar-time').selectedIndex;
     openModal();
   }
 
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('modal-backdrop').addEventListener('click', closeModal);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-  // Form submit
-  document.getElementById('reservation-form').addEventListener('submit', function(e) {
+  document.getElementById('reservation-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const data = new FormData(this);
-    const firstName = data.get('firstName').trim();
-    const email = data.get('email').trim();
-    const date = data.get('date');
+    var btn = document.getElementById('submit-btn');
+    var data = new FormData(this);
+    var firstName = data.get('firstName').trim();
+    var email = data.get('email').trim();
+    var date = data.get('date');
+
     if (!firstName || !email || !date) {
       alert('Please fill in all required fields.');
       return;
     }
-    if (!/^[^s@]+@[^s@]+.[^s@]+$/.test(email)) {
+    var re = /^[^s@]+@[^s@]+.[^s@]+$/;
+    if (!re.test(email)) {
       alert('Please enter a valid email address.');
       return;
     }
-    closeModal();
-    showToast();
-    this.reset();
-    document.getElementById('modal-date').value = today;
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    var payload = {
+      firstName:   firstName,
+      lastName:    data.get('lastName').trim(),
+      email:       email,
+      guests:      data.get('guests'),
+      date:        date,
+      time:        data.get('time'),
+      requests:    data.get('requests').trim(),
+      submittedAt: new Date().toISOString()
+    };
+
+    try {
+      var res = await fetch(N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('error');
+      closeModal();
+      showToast('Reservation confirmed! We will see you soon.', false);
+      this.reset();
+      document.getElementById('modal-date').value = today;
+    } catch (err) {
+      showToast('Something went wrong. Please call us directly.', true);
+    } finally {
+      btn.textContent = 'Confirm Reservation';
+      btn.disabled = false;
+    }
   });
 
-  // Toast
-  function showToast() {
-    const toast = document.getElementById('toast');
-    toast.classList.remove('hidden');
-    setTimeout(() => toast.classList.add('hidden'), 4000);
+  function showToast(msg, isError) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.backgroundColor = isError ? '#b91c1c' : '';
+    t.classList.remove('hidden');
+    setTimeout(function() { t.classList.add('hidden'); }, 4500);
   }
 
-  // Gift card msg
   function showGiftCardMsg() {
     alert('Gift cards are available at our restaurant or by calling +33 1 42 00 00 00.');
   }
 
-  // Share
   function sharesite() {
     if (navigator.share) {
       navigator.share({ title: 'The Editorial Epicurean', url: window.location.href });
     } else {
-      navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied to clipboard!'));
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        alert('Link copied to clipboard!');
+      });
     }
   }
 
-  // Mobile menu toggle
-  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
     document.getElementById('mobile-menu').classList.toggle('hidden');
   });
+
   function closeMobileMenu() {
     document.getElementById('mobile-menu').classList.add('hidden');
   }
